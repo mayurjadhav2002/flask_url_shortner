@@ -1,0 +1,30 @@
+html, body {
+    height: 100%;
+    width: 100%;
+
+
+  }
+  .main-hero{
+    width: 80%;
+    margin-left: 10%;
+  }
+tr{
+  width: 33.3% !important;
+  text-overflow: ellipsis !important;
+}
+
+  @media only screen and (max-width: 700px) {
+    .img{
+          display: none;
+      }
+      .main-hero{
+        width: 100%;
+      }
+    table{
+      width: 500px;
+      height: 500px;
+      overflow: auto;
+    }
+    
+}
+

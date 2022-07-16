@@ -1,0 +1,134 @@
+
+
+{%extends "base.html" %}
+{%block content%}
+{%- for category, message in get_flashed_messages(with_categories = true) %}  
+<div class="text-center m-3 alert alert-warning alert-dismissible fade show" role="alert">
+
+  <strong>Shorted URL: </strong> <a id="foo" href="/{{ message }}" value="{{ message }}">{{ message }}</a>
+  <button type="button" id="btn" class="m-lg-0 btn btn-primary mr-0" onclick="CopyToClipboard('foo');return false;">Copy</button>
+</div>
+{%- endfor %}  
+
+
+
+
+<div class="border-bottom justify-content-center container">
+	<div class=" row align-self-center justify-text-center m-5 ">
+		<div class="col text-center align-self-center justify-text-center ">
+			<h1>Short links, Big results </h1>
+	
+			<span>Short your URL made with Powerful Tools to help you grow and protect your brand.</span>
+					<hr class="text-info hr-line border-2 opacity-50">
+<form class="input-group md-2 input-group-lg" action="new" method="post">
+  <input type="url" name="url" class="form-control" placeholder="Enter URL"  aria-describedby="basic-addon2">
+  <button class="btn btn-primary input-group-text" id="basic-addon2" >Short URL</button>
+</form>
+
+
+
+			
+
+			
+
+			
+<label class="text-gray-300 left-0 text-left mt-2" style="left:0 !important; color: gray">Have I told you? It's Free!</label>
+		</div>
+		<div class="col img">
+			<img src="{{url_for('static',filename='undraw_link_shortener_mvf6.svg')}}" class="img-fluid">
+		</div>
+	</div>
+</div>
+
+
+	<div class="container text-center mt-5">
+        <div class="row">
+            <h3>Why URL Shortner?</h3>
+
+            <div class="col img">
+<img src="{{url_for('static', filename='undraw_writer_q06d.svg')}}" alt="" class="img-fluid">
+            </div>
+            <div class="col text-justify text-wrap align-self-center justify-text-center" style="font-size: 20px">
+                <p >
+                    A URL shortener, also known as a link shortener, seems like a simple tool, but it is a service that can have a dramatic impact on your marketing efforts.
+        
+        Link shorteners work by transforming any long URL into a shorter, more readable link. When a user clicks the shortened version, they’re automatically forwarded to the destination URL.
+        
+        Think of a short URL as a more descriptive and memorable nickname for your long webpage address. You can, for example, use a short URL so people will have a good idea about where your link will lead before they click it.
+        
+        If you’re contributing content to the online world, you need a URL shortener.
+        
+        Make your URLs stand out with our easy to use free link shortener above.
+                </p>
+            </div>
+        </div>
+		
+		
+	</div>
+
+
+	<hr class="dotted container w-75 align-self-center">
+<div class="text-center m-5 table-con">
+	<h2>Recently Shorted URL</h2>
+</div>
+
+
+
+<div class="container">
+<div class="row ">
+    {% for url in url %}  
+    <div class="col-6 col-md-3 overflow-hidden col p-3 bg-light rounded-4" style="border: 3px solid white;">
+        <p>  <strong>URL: </strong>{{ url.url }}</p>
+    
+        <div class="bottom mb-0" style="bottom: 0;">        <strong>Short Url: </strong> <a href="{{url.shorted_text}}">{{url.shorted_text}}</a>
+</div>
+<div class="bottom mb-0" style="bottom: 0;">        <strong>Views Url: </strong> {{url.views}}
+</div>
+<br>
+
+    </div>
+    {% endfor %}  
+   
+    
+
+</div>
+</div>
+
+<br>
+
+ <!--
+	
+This script places a badge on your repl's full-browser view back to your repl's cover page. Try various colors for the theme: dark, light, red, orange, yellow, lime, green, teal, blue, blurple, magenta, pink!
+-->
+
+
+
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+function CopyToClipboard(id)
+{
+document.getElementById('btn').innerHTML='Copied';
+var r = document.createRange();
+r.selectNode(document.getElementById(id));
+window.getSelection().removeAllRanges();
+window.getSelection().addRange(r);
+document.execCommand('copy');
+window.getSelection().removeAllRanges();
+}
+
+
+
+</script>
+<script>
+const btn = document.getElementById('btn');
+
+// ✅ Change button text on click
+btn.addEventListener('click', function handleClick() {
+  btn.textContent = 'Copied';
+});
+</script>
+{% endblock %}
