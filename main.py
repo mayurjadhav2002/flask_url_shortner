@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 import secrets
 import string
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///url2.sqlite3'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///url1.sqlite3'
 app.config['SECRET_KEY'] = "random string"
 
 db = SQLAlchemy(app)
